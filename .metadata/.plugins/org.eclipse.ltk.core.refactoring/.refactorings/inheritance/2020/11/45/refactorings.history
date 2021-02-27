@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;Thirdpage.jsp&apos; to &apos;inheritance&apos;" description="Move &apos;Thirdpage.jsp&apos; to &apos;inheritance&apos;" destination="/inheritance" element1="/FirstWebDemo/WebContent/Thirdpage.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1604662168903" updateReferences="true"/>
+</session>

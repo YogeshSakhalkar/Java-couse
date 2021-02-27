@@ -1,0 +1,176 @@
+package com.guii;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+class ContactForm extends JFrame implements ActionListener {
+//1-step - create an object of ContactBookImpl
+IContactBookSortable contactBookSortable;
+
+JLabel lblHead;
+JLabel lblName, lblEmail, lblPhone;
+JTextField txtName, txtEmail, txtPhone;
+JButton btnInsert, btnDelete, btnFind, btnList;
+JButton btnSave, btnLoad;
+
+public ContactForm(String title) {
+super(title);
+setupGUI();
+
+//2-step - create an object of ContactBookImpl
+contactBookSortable = new ContactBookImpl(5);
+}
+
+public void setupGUI() {
+lblName = new JLabel("Name:");
+lblEmail = new JLabel("MailId:");
+lblPhone = new JLabel("Phone No.:");
+
+txtName = new JTextField(10);
+txtEmail = new JTextField(10);
+txtPhone = new JTextField(10);
+
+btnInsert = new JButton("Insert");
+btnDelete = new JButton("Delete");
+btnFind = new JButton("Find");
+btnList = new JButton("List");
+
+btnSave = new JButton("Save");
+btnLoad = new JButton("Load");
+
+//add components to Panel
+JPanel mainPanel = new JPanel(new BorderLayout());
+JPanel formPanel = new JPanel(new GridLayout(3, 2));
+formPanel.setBackground(Color.YELLOW);
+JPanel buttonPanel = new JPanel(new GridLayout(2, 3));
+//panel.setLayout(new GridLayout(3,2));
+
+formPanel.add(lblName);
+formPanel.add(txtName);
+formPanel.add(lblEmail);
+formPanel.add(txtEmail);
+formPanel.add(lblPhone);
+formPanel.add(txtPhone);
+
+buttonPanel.add(btnInsert);
+buttonPanel.add(btnDelete);
+buttonPanel.add(btnFind);
+buttonPanel.add(btnList);
+
+buttonPanel.add(btnSave);
+buttonPanel.add(btnLoad);
+
+lblHead = new JLabel("MZOS-Pune");
+mainPanel.add(lblHead, BorderLayout.NORTH);
+
+mainPanel.add(formPanel, BorderLayout.CENTER);
+mainPanel.add(formPanel, BorderLayout.CENTER);
+mainPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+//add panel to frame
+add(mainPanel);
+//3-registering button and informing handle
+//is in current object via this
+btnInsert.addActionListener(this);
+btnDelete.addActionListener(this);
+btnFind.addActionListener(this);
+btnList.addActionListener(this);
+
+btnSave.addActionListener(this);
+btnLoad.addActionListener(this);
+
+new DateTimeThread().start();
+}
+
+class DateTimeThread extends Thread {
+@Override
+public void run() {
+while(true) {
+lblHead.setText(new Date().toLocaleString());
+}
+}
+}
+
+//class CancelEvent
+//1-Implement ActionListener
+//2-Override actionPerformed
+//3-register to Button
+//this is event call back method
+@Override
+public void actionPerformed(ActionEvent evt) {
+
+Object obj = evt.getSource();
+if (obj == btnInsert) {
+// extract values from GUI
+String name = txtName.getText();
+String email = txtEmail.getText();
+String phone = txtPhone.getText();
+Contact contact = new Contact(name, email, phone);
+contactBookSortable.add(contact);
+JOptionPane.showMessageDialog(this, "INSERTED!!!");
+} else if (obj == btnList) {
+contactBookSortable.list();
+//JOptionPane.showMessageDialog(this, "LIST!!!");
+} else if (obj == btnDelete) {
+String name =
+JOptionPane.showInputDialog(this, "Enter Name:");
+contactBookSortable.delete(name);
+JOptionPane.showMessageDialog(this, "DELETED!!!");
+} else if (obj == btnFind) {
+String name =
+JOptionPane.showInputDialog(this, "Enter Name:");
+Contact contact = contactBookSortable.find(name);
+if(contact!=null) {
+JOptionPane.showMessageDialog(this, "FOUND!!!");
+txtName.setText(contact.getName());
+txtEmail.setText(contact.getEmail());
+txtPhone.setText(contact.getPhone());
+}
+else {
+JOptionPane.showMessageDialog(this, "NOT FOUND!!!");
+}
+System.out.println("Found:"+contact);
+} else if(obj == btnSave) {
+JOptionPane.showMessageDialog(this, "SAVING CONTACTS!!!");
+contactBookSortable.save();
+}
+else if(obj == btnLoad) {
+JOptionPane.showMessageDialog(this, "LOADING CONTACTS!!!");
+contactBookSortable.load();
+}
+}
+
+
+}
+
+public class Contact_Swing_Save_Load_App {
+
+public static void main(String[] args) {
+
+ContactForm contactForm = new ContactForm("Contact Form...");
+contactForm.setVisible(true);
+contactForm.setSize(500, 300);
+contactForm.setResizable(false);
+//contactForm.pack();
+contactForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+contactForm.setLocationRelativeTo(null);
+}
+}
+
+

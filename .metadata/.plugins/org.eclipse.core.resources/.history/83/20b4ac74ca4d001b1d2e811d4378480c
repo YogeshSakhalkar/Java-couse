@@ -1,0 +1,26 @@
+package p1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		List<Person> allPerson = new ArrayList(); 
+		allPerson.add(new Person("Yogesh","M",24));
+		allPerson.add(new Person("Samin","M",24));
+		allPerson.add(new Person("Devanad","M",24));
+		allPerson.add(new Person("Nihaab","M",24));
+		allPerson.add(new Person("Nilay","M",28));
+		allPerson.add(new Person("Nikita","F",28));
+		
+		//1:filter the collection on gender and store at temp
+		//2:iterate over temp location
+		//3:increment the number -> count
+		
+		allPerson.stream().forEach(value->System.out.println(value.getName()));
+	}
+
+}

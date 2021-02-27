@@ -1,0 +1,72 @@
+package p1;
+
+import java.awt.*;
+import java.awt.event.*;
+
+import LogIN.LogInOject;
+
+public class RegistrationFrame 
+							extends Frame implements ActionListener
+										{
+
+	Button btSubmit,btClear;
+	
+	TextField txtUname, txtPassword, txtCity;
+	Label lbUname, lbPassword, lbCity;
+	
+	public RegistrationFrame() {
+		
+		btSubmit= new Button("Submit Data");
+		btClear = new Button("Clear Data");
+		
+		txtUname = new TextField(20);
+		txtPassword = new TextField(20);
+		txtCity = new TextField(20);
+		
+		lbUname  = new Label("Enter the User name");
+		lbPassword = new Label("Enter the password");
+		lbCity = new Label("enter the city");
+		
+		txtPassword.setEchoChar('*');
+		this.setTitle("Registration Form");
+		this.setVisible(true);
+		this.setBounds(300, 200, 325, 350);
+		this.setLayout(new FlowLayout());
+		this.setResizable(false);
+		this.add(lbUname);
+		this.add(txtUname);
+		this.add(lbPassword);
+		this.add(txtPassword);
+		this.add(lbCity);
+		this.add(txtCity);
+		this.add(btClear);
+		this.add(btSubmit);
+		
+		MyWindowListener mw = new MyWindowListener(this);
+		this.addWindowListener(mw);
+		
+		//gui.addWindowListener(listener)
+		
+		btSubmit.addActionListener(this);
+		btClear.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		// TODO Auto-generated method stub
+
+		if(ae.getSource()==btSubmit)
+		{
+			//System.out.println("SUBMIT");
+			
+			new LogInOject();
+			this.dispose();
+		}
+		else 
+		{
+			System.out.println("CANCEL");
+		}
+	}
+
+}//RF class ends here
+

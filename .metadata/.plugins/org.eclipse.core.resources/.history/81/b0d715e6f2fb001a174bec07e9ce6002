@@ -1,0 +1,47 @@
+package view;
+
+import java.awt.*;
+
+import Controller.*;
+
+public class LoginFrame extends Frame{
+
+	Button btLogin, btClear;
+	TextField txtUsername, txtPassword;
+	Label lbUsername,lbPassword;
+	
+	public LoginFrame() {
+		btLogin = new Button("Login");
+		btClear = new Button("Clear");
+		
+		txtUsername = new TextField(15);
+		txtPassword = new TextField(15);
+		
+		lbUsername = new Label("Username : ");
+		lbPassword = new Label("Password : ");
+		
+		this.setVisible(true);
+		this.setResizable(false);
+		this.setBounds(200, 200, 250, 500);
+		txtPassword.setEchoChar('*');
+		this.setTitle("Login");
+		
+		this.setLayout(new FlowLayout());
+		this.add(lbUsername);
+		this.add(txtUsername);
+		
+		this.add(lbPassword);
+		this.add(txtPassword);
+		
+		this.add(btLogin);
+		this.add(btClear);
+		
+		Windowlistner l1 = new Windowlistner(this);
+		this.addWindowListener(l1);
+		
+		LoginFrameController Lfc = LoginFrameController(this);
+		btLogin.addActionListener(Lfc);
+		btClear.addActionListener(Lfc);
+	}
+	
+}

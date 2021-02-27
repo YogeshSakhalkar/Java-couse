@@ -1,0 +1,49 @@
+package com.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+//import com.mysql.jdbc.Driver;
+
+public class Test_JDBC_MYSQL {
+
+	public static void main(String[] args) {
+
+		String url = "jdbc:mysql://localhost:3306/MZOS";
+
+		String username = "root";
+		String password = "";
+
+		// 1-load the jdbc driver
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+
+			// 2-establish the data connection
+
+			Connection con = DriverManager.getConnection(url, username, password);
+			// 3-create a statement
+			Statement stat = con.createStatement();
+
+			// 4-create a query
+			String SQL = "SELECT* FROM Student";
+			// 5-execute the query
+			ResultSet rs = stat.executeQuery(SQL);
+
+			// 6-process the query result
+
+			while (rs.next()) {
+				System.out.println(rs.getInt("ROLL_NO") + "\t" + rs.getString("NAME") + "\t" + rs.getFloat("MARKS"));
+			}
+			rs.close();
+			stat.close();
+			con.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

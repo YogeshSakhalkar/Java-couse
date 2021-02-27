@@ -1,0 +1,30 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import com.mysql.jdbc.PreparedStatement;
+
+public class demoprepared {
+public static void main(String[] args) {
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		System.out.println("Driver Loaded Sucessfully");
+		
+		String url="jdbc:mysql://localhost:3307/test";
+		Connection con=DriverManager.getConnection(url,"root","root");
+		System.out.println("Connction Sucessfull");
+		
+		java.sql.PreparedStatement pstmt = con.prepareStatement("insert into employee values(?,?,?)");
+		
+		pstmt.setInt(1, 222);
+		pstmt.setString(2, "Dhoni");
+		pstmt.setDouble(3, 230000);
+		pstmt.executeUpdate();
+		
+		int count =pstmt.getFetchDirection();
+		System.out.println(count+"row updated");
+	}
+	catch(Exception e) {
+		e.printStackTrace();
+	}
+}
+}

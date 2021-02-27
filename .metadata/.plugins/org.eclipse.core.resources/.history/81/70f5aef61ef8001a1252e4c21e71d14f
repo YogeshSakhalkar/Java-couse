@@ -1,0 +1,12 @@
+package Emp;
+
+
+public class loginMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		LogIn L1 = new LogIn(); 
+	}
+
+}

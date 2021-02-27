@@ -1,0 +1,64 @@
+package Controller.SuperUser.UserAdd;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.Serializable;
+
+import javax.swing.JOptionPane;
+
+import model.AddSalesManager;
+import view.LoginFrame;
+import view.SuperUser.SuperClassHomepageFrame;
+import view.SuperUser.AddUser.NewSalesManagerFrame;
+import view.SuperUser.AddUser.UserAddFrame;
+
+public class AddSalesManagerController implements ActionListener{
+	
+	NewSalesManagerFrame newSalesManagerFrame;
+	
+	public AddSalesManagerController(NewSalesManagerFrame n) {
+		// TODO Auto-generated constructor stub
+		newSalesManagerFrame=n;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		if(e.getSource() == newSalesManagerFrame.getBtSubmit()) {
+			String id = newSalesManagerFrame.getTxtId().getText();
+			String name = newSalesManagerFrame.getTxtName().getText();
+			String salary = newSalesManagerFrame.getTxtSalary().getText();
+			String incentive = newSalesManagerFrame.getTxtIncentive().getText();
+			String target = newSalesManagerFrame.getTxtTarget().getText();
+			
+			AddSalesManager a1 = new AddSalesManager();
+			
+			a1.setId(Integer.parseInt(id));
+			a1.setName(name);
+			a1.setSalary(Double.parseDouble(salary));
+			a1.setIncentive(Double.parseDouble(incentive));
+			a1.setTarget(Integer.parseInt(target));
+			
+			db.DAONewsalesmanager d1= new  db.DAONewsalesmanager();
+			
+			if(d1.insert(a1))
+			{
+				System.out.println("successfully inserted!");
+				JOptionPane.showMessageDialog(newSalesManagerFrame, "successfully inserted!");
+				new UserAddFrame();
+				newSalesManagerFrame.dispose();
+			}
+			else
+			{
+				System.out.println("Register again");
+			}
+		}
+		
+		if(e.getSource() == newSalesManagerFrame.getBtBack()) {
+			new UserAddFrame();
+			newSalesManagerFrame.dispose();
+		}
+	}
+	}
+

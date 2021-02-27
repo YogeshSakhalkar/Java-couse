@@ -1,0 +1,11 @@
+package view.SuperUser;
+
+import model.AddSalesManager;
+
+public class SalesManagerDetails {
+
+	public SalesManagerDetails(AddSalesManager s1) {
+		// TODO Auto-generated constructor stub
+	}
+
+}

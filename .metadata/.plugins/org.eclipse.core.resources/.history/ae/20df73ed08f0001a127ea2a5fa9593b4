@@ -1,0 +1,93 @@
+import javax.sound.midi.Instrument;
+
+abstract class Intrument{
+	String music;
+	public Intrument() {
+		this.music="Not given";
+	}
+	public Intrument(String music) {
+		super();
+		this.music = music;
+	}
+	
+	public String getMusic() {
+		return music;
+	}
+
+	public void setMusic(String music) {
+		this.music = music;
+	}
+	abstract String play();
+}
+
+class Piano extends Intrument{
+	
+	public Piano() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Piano(String music) {
+		super(music);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	String play() {
+		System.out.println("Piano is playing "+music);
+		
+		return music;
+	}
+	
+}
+
+class Flute extends Intrument{
+	
+	public Flute() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Flute(String music) {
+		super(music);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	String play() {
+		// TODO Auto-generated method stub
+		System.out.println("Flute is playing "+music);
+		return music;
+	}
+	
+}
+
+class Guitar extends Intrument{
+	
+	public Guitar() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Guitar(String music) {
+		super(music);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	String play() {
+		// TODO Auto-generated method stub
+		System.out.println("Guitar is playing "+music);
+		return null;
+	}
+	
+}
+public class Demo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Piano p1= new Piano("tan tan tan");
+		p1.play();
+	}
+
+}

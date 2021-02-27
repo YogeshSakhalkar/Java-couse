@@ -1,0 +1,160 @@
+package com.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+//DAO-Data Access Object Pattern
+
+public class Student_DAO {
+
+	private Connection con = null;
+
+	public Student_DAO() {
+
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost:3306/MZOS";
+		String username = "root";
+		String password = "";
+
+		// 1-load the jdbc driver
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+
+			// 2-establish the data connection
+
+			con = DriverManager.getConnection(url, username, password);
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void selectAll() {
+		Statement stat;
+		try {
+			stat = con.createStatement();
+
+			// 4-create a query
+			String SQL = "SELECT* FROM Student";
+
+			// 5-execute the query
+
+			ResultSet rs = stat.executeQuery(SQL);
+
+			// 6-process the query result
+
+			while (rs.next()) {
+				System.out.println(rs.getInt("ROLL_NO") + "\t" + rs.getString("NAME") + "\t" + rs.getFloat("MARKS"));
+			}
+			rs.close();
+			stat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// to show parameterized query
+	public void select(int rollNo) {
+		Statement stat;
+		try {
+			stat = con.createStatement();
+
+			// 4-create a query
+			String SQL = "SELECT* FROM Student WHERE ROLL_NO=?";
+
+			// create a statement
+			PreparedStatement pstat = con.prepareStatement(SQL);
+			pstat.setInt(1, rollNo);
+
+			// 5-execute the query
+
+			ResultSet rs = pstat.executeQuery();
+
+			// 6-process the query result
+
+			while (rs.next()) {
+				System.out.println(rs.getInt("ROLL_NO") + "\t" + rs.getString("NAME") + "\t" + rs.getFloat("MARKS"));
+			}
+			rs.close();
+			stat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void insert(int rollNo, String Name, float Marks) {
+		Statement stat;
+		try {
+			stat = con.createStatement();
+
+			// 4-create a query
+			String SQL = "INSERT INTO Student VALUES(?,?,?)";
+
+			// create a statement
+			PreparedStatement pstat = con.prepareStatement(SQL);
+			pstat.setInt(1, rollNo);
+			pstat.setString(2, Name);
+			pstat.setFloat(3, Marks);
+
+			// 5-execute the query
+			int rows = pstat.executeUpdate();
+
+			// 6-process the query result
+			System.out.println("Rows inserted:" + rows);
+			// while(rs.next()) {
+			// System.out.println(rs.getInt("ROLL_NO")+"\t"+rs.getString("NAME")+"\t"+rs.getFloat("MARKS"));
+			// }
+			// rs.close();
+			pstat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void update(int rollNo, String Name, float Marks) {
+		Statement stat;
+		try {
+			stat = con.createStatement();
+
+			// 4-create a query
+			String SQL = "UPDATE Student SET NAME=? MARKS=? ROLLNO=?";
+
+			// create a statement
+			PreparedStatement pstat = con.prepareStatement(SQL);
+			pstat.setString(1, Name);
+			pstat.setFloat(2, Marks);
+			pstat.setInt(3, rollNo);
+
+			// 5-execute the query
+			int rows = pstat.executeUpdate();
+
+			// 6-process the query result
+			System.out.println("Rows updated:" + rows);
+			// while(rs.next()) {
+			// System.out.println(rs.getInt("ROLL_NO")+"\t"+rs.getString("NAME")+"\t"+rs.getFloat("MARKS"));
+			// }
+			// rs.close();
+			pstat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		Student_DAO studentDAO = new Student_DAO();
+		// studentDAO.selectAll();
+
+		studentDAO.insert(105, "yogesh", 65.5f);
+		studentDAO.select(104);
+		// studentDAO.selectAll();
+		studentDAO.update("Yogesh",105, 67.7f);
+
+	}
+
+}

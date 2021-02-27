@@ -1,0 +1,124 @@
+package com.utils.collection;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Collections;
+import java.util.Iterator;
+
+ class Contact implements Comparable<Contact>{
+	private String name, email,phone;
+
+	public Contact(String name, String email, String phone) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	@Override
+	public String toString() {
+		return "contact [name=" + name + ", email=" + email + ", phone=" + phone + "]";
+	}
+
+	@Override
+	public int compareTo(Contact objName) {
+		return this.getName().compareTo(objName.getName());
+	}
+	
+	class EmailComparator implements Comparator<Contact>{
+		@Override
+		public int compare(Contact c1, Contact c2) {
+		return c1.getEmail().compareTo(c2.getEmail());
+	}
+}
+	
+	class PhoneComparator implements Comparator<Contact>{
+		@Override
+		public int compare(Contact c1, Contact c2) {
+		return c1.getPhone().compareTo(c2.getPhone());
+	}
+	}
+ }
+
+
+public class Test_ContactBook_Map {
+public static void main(String[] args) {
+	Contact c1,c2,c3;
+	c1=new Contact("amar","amar@gmail.com","123");
+	c2=new Contact("akbar","akbar@gmail.com","234");
+	c3=new Contact("anthhohy","anthony@gmail.com","456");
+	
+	/*Contact[] contacts= new Contact[] {c1,c2,c3};
+	System.out.println(Arrays.toString(contacts));
+	Arrays.sort(contacts);
+	System.out.println(Arrays.toString(contacts));
+	
+	Arrays.sort(contacts, new Contact.EmailComparator());
+	System.out.println(Arrays.toString(contacts));
+
+	Arrays.sort(contacts, new Contact.PhoneComparator());
+	System.out.println(Arrays.toString(contacts));*/
+	//list implementation
+	List<Contact> listContact = new ArrayList<Contact>();
+	listContact.add(c1);
+	listContact.add(c2);
+	listContact.add(c3);
+	//printing
+	//listcontent forEAch(System.out.println 
+	Iterator<Content> itrContact = listContact.iterator();
+	while(itrContact.hasNext()) {
+	System.out.println(itrContact.next());
+	}
+	Collection.sort(listContact);
+	listcontact.forEach(System.out::println);
+	
+	Collection.sort(listContact, new Contact.EmailComparator());
+	listContact.forEach(System.out::println);
+	
+	//map implementation
+	Map<String, Contact> mapContact=new HashMap<String, Contact>();
+	mapContact.put(c1.getName(),c1);
+	mapContact.put(c2.getName(),c2);
+	mapContact.put(c3.getName(), c3);
+	Collection.sort((ListContact>)mapContact.values();
+	}
+}
+/*1 contact feild param Const-getter-toStrig
+* 2 main create c1,c2,c3 Contact objects
+* 3 create  contact Object of an array
+* 4 Array exception
+* 5 Exception -ClassCastException-excepts Comparable
+* 6 Solutions implement Comparable interfaces
+* 7 ovveride compareble interfece 
+* 8 exception is gone
+* 9 for other */
+ 

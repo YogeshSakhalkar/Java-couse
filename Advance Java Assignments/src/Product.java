@@ -1,0 +1,89 @@
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+
+class MyKey{
+	String company;
+
+	public MyKey(String company) {
+		super();
+		this.company = company;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	@Override
+	public String toString() {
+		return "\n MyKey [company=" + company + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		MyKey k1=(MyKey)obj;
+		if(k1.company.equalsIgnoreCase(this.getCompany())) {
+			return true;
+		}
+		return false;
+	}	
+	
+}//Mykey class ends here
+public class Product {
+	int product_id;
+	String name;
+	
+	public Product(int id, String name) {
+		this.product_id = id;
+		this.name = name;
+	}
+
+	public int getId() {
+		return product_id;
+	}
+
+	public void setId(int id) {
+		this.product_id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "\nProduct [id=" + product_id + ", name=" + name + "]\n";
+	}
+	
+	
+}
+class ProductDemo{
+	
+	public static void main(String[] args) {
+		
+		Map m1 = new HashMap();
+		m1.put(new MyKey("Maruti"),new Product(1001, "Maruti800"));
+		m1.put(new MyKey("Maruti"),new Product(3422, "Maruti Zen"));
+		m1.put(new MyKey("Maruti"),new Product(565, "Maruti Esteem"));
+		m1.put(new MyKey("Hundai"),new Product(1111,"Hundai Verna"));
+		m1.put(new MyKey("Honda"),new Product(909,"Honda City"));
+		m1.put(new MyKey("Kia"),new Product(121, "Kia Seltos"));
+		m1.put(new MyKey("Mahindra"),new Product(245, "Mahindra Balaro")); 
+		m1.put(new MyKey("Honda"), new Product(112, "Honda Civic"));
+		m1.put(new MyKey("Hundai"), new Product(5661, "Hundai brio"));
+		System.out.println(m1);
+		
+		
+		System.out.println("New Map");
+		System.out.println(m1);
+	}
+}//hashcode equals override

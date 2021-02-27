@@ -1,0 +1,34 @@
+package com.classes;
+
+public class Square {
+	
+	public static void main(String[] args) {
+		
+		 
+		//declaration
+		Test_Square c1, c2, c3;
+		
+		//memory allocation/ object instantiation
+		c1 = new Test_Square();			//will call default
+		c2 = new Test_Square(5.0f);		//will call parameter
+	
+		
+		//call setter method to set private field of an object
+		c1.setSquare(3.5f);
+		c2.setSquare(5.5f);
+		
+		
+		System.out.println("c1 Area:"+c1.calcArea());
+		System.out.println("c2 Area:"+c2.calcArea());
+		
+		/*calling toString - should print the state of an object
+		 prints com.classes.circle@15db9742
+		 prints package name - Class Name
+		 hexadecimal value of memory location*/
+		
+		System.out.println("c1 toString:"+c1);
+		System.out.println("c2 toString:"+c2.toString());
+
+	}
+
+}

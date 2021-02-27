@@ -1,0 +1,92 @@
+package com.utils.collection;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Comparator;
+
+class Crayon implements Comparable<Crayon> {
+	private String color;
+	
+	public Crayon(String color) {
+		super();
+		this.color=color;
+	}
+
+	
+	public Crayon(Crayon crayon, Crayon crayon2, Crayon crayon3) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	static class DecendingOrderColor implements Comparator<Crayon>
+	public int compares (Crayon c1, Crayon c2) {
+		return c2.getColor().compareTo((Crayon) c1.getColor());
+	}
+
+	@Override
+	public int compare(Crayon arg0, Crayon arg1) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+	public Comparable<Crayon> getColor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public int compareTo(Crayon arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}}
+public class Test_Comparable_Comparator {
+	
+public static void main(String[] args) {
+	//arrays..
+	String[] colors = new String[] {"Red","Green","Blue"};
+	System.out.println(Arrays.toString(colors));
+	Arrays.sort(colors);
+	System.out.println(Arrays.toString(colors));
+	
+	int[] nums = new int[] {1,3,5,2,4};
+	System.out.println(Arrays.toString(nums));
+	Arrays.sort(nums);
+	System.out.println(Arrays.toString(nums));
+	
+	Integer[] objnums = new Integer[] {1,3,5,2,4};
+	System.out.println(Arrays.toString(objnums));
+	Arrays.sort(objnums);
+	System.out.println(Arrays.toString(objnums));
+	
+	//Comparable Comparable = (Comparable) new Crayon("yellow");
+	//declaration memory allocation and initialization
+	
+	Crayon crayon = new Crayon[] (new Crayon("Red"),
+			new Crayon("Green"), new Crayon("Blue"));
+	
+	//declaration and memmory allocaton
+	Crayon[] crayons2 = new Crayon[3];
+	//initailization
+	crayons2[0] = new Crayon("Red");
+	crayons2[1] = new Crayon("Green");
+	crayons2[3] = new Crayon("Blue");
+	
+	System.out.println(Arrays.toString(crayons2));
+	System.out.println(crayons2);
+	System.out.println(Arrays.toString(crayons2));
+	
+	//using Comparator for DescendingOrderColor
+	//Arrays.sort(crayons, new DescendingOrderColor());
+	Arrays.sort(crayons2, new Crayon.DescendingOrderColor);
+	System.out.println(Arrays.toString(crayons2));
+}
+
+public Object getColor() {
+	// TODO Auto-generated method stub
+	return null;
+}
+}

@@ -1,0 +1,36 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class PhoneBook {
+	String name;
+	double PhoneNo;
+	
+	public PhoneBook(String name, double phoneNo) {
+		super();
+		this.name = name;
+		PhoneNo = phoneNo;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getPhoneNo() {
+		return PhoneNo;
+	}
+	public void setPhoneNo(double phoneNo) {
+		PhoneNo = phoneNo;
+	}
+	@Override
+	public String toString() {
+		return "\n PhoneBook [name=" + name + ", PhoneNo=" + PhoneNo + "]";
+	}
+	
+}
+class DemoPhone{
+ public static void main(String[] args) {
+	Map m1 = new HashMap();
+	m1.put(new PhoneBook("yogesh",909019949));
+}
+}

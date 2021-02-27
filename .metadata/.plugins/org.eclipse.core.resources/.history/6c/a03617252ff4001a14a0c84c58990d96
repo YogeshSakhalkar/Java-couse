@@ -1,0 +1,39 @@
+package Complex;
+class operationComplex{
+	float real;
+	float imag;
+	public operationComplex() {
+		this.real=5;
+		this.imag=10;
+	}
+	public operationComplex(float real, float imag) {
+		super();
+		this.real = real;
+		this.imag = imag;
+	}
+	public float getReal() {
+		return real;
+	}
+	public void setReal(float real) {
+		this.real = real;
+	}
+	public float getImag() {
+		return imag;
+	}
+	public void setImag(float imag) {
+		this.imag = imag;
+	}
+
+	void SubComplex() {
+		
+	}
+}
+
+public class ComplexDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

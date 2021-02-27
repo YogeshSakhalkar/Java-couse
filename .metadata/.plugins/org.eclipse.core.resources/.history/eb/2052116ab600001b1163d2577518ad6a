@@ -1,0 +1,26 @@
+import java.util.HashMap;
+
+public class PhoneBook {
+	String name;
+	double PhoneNo;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getPhoneNo() {
+		return PhoneNo;
+	}
+	public void setPhoneNo(double phoneNo) {
+		PhoneNo = phoneNo;
+	}
+	@Override
+	public String toString() {
+		return "\n PhoneBook [name=" + name + ", PhoneNo=" + PhoneNo + "]";
+	}
+	
+}
+class DemoPhone{
+
+}

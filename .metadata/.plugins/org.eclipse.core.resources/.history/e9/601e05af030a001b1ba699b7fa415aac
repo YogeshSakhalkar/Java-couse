@@ -1,0 +1,25 @@
+package Controller.User.CalSal;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import view.User.UserCalSalSearchFrame;
+import view.User.calsal.SalesManagerCalSal;
+
+public class SalesManagerCalSalController implements ActionListener{
+
+	SalesManagerCalSal salesManagerCalSal;
+	public SalesManagerCalSalController(SalesManagerCalSal s) {
+		// TODO Auto-generated constructor stub
+		salesManagerCalSal = s;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource() == salesManagerCalSal.getBtBack()) {
+			salesManagerCalSal.dispose();
+			new UserCalSalSearchFrame();
+	}
+
+}

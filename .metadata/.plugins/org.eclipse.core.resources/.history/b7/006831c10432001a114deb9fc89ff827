@@ -1,0 +1,41 @@
+package com.classes;
+
+public class Test_Square {
+
+	//fields
+	private float side;
+	
+	//def construtor
+	public Test_Square() {
+	side = 0.0f;
+	System.out.println("->def...");
+	}
+	
+	public float getSquare() {
+		return side;
+	}
+
+	public void setSquare(float side) {
+		this.side = side;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		//return super.toString() + "Radius: "+radius;
+		return "side: "+side;
+	}
+	
+	
+	//parameter constructor
+	public Test_Square(float pradius) {
+		side=pradius;
+		System.out.println("Circle->param...");
+		}
+	
+	public double calcArea() {
+		double result;
+		result = 2 * side;
+		return result;
+	}
+}

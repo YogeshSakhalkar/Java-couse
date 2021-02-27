@@ -1,0 +1,80 @@
+package Emp;
+import java.awt.*;
+import java.awt.event.*;
+
+public class LoginFrame extends Frame implements ActionListener{
+
+	Button btLogin,btClear,btNewUser;
+	TextField txtUname,txtPassword;
+	Label lbUname,lbPassword;
+
+public LoginFrame() {
+
+	btLogin = new Button("Login");
+	btClear = new Button("Clear");
+	btNewUser = new Button("New User");
+	
+	txtUname = new TextField(20);
+	txtPassword = new TextField(20);
+	
+	lbUname = new Label("Enter Username");
+	lbPassword = new Label("Enter Password");
+	
+	
+	txtPassword.setEchoChar('*');
+	this.setTitle("login Form");
+	this.setVisible(true);
+	this.setBounds(250, 150, 300, 200);
+	this.setResizable(false);
+	
+	this.setLayout(new FlowLayout());
+	this.add(lbUname);
+	this.add(txtUname);
+	this.add(lbPassword);
+	this.add(txtPassword);
+	
+	this.add(btLogin);
+	this.add(btClear);
+	this.add(btNewUser);
+	
+	Windowlistner ml = new Windowlistner(this);
+	this.addWindowListener(ml);
+	//gui.addWindowListener(Listener);
+	
+	btLogin.addActionListener(this);
+	btNewUser.addActionListener(this);
+	btClear.addActionListener(this);
+	
+	
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent ar) {
+		if(ar.getSource()==btNewUser) {
+			
+			new RegistrationFrame();
+			this.dispose();
+		}
+		
+		else {
+					if(ar.getSource()==btLogin)
+					{
+						String uname=txtUname.getText();
+						String password = txtPassword.getText();
+						System.out.println(uname+" "+password);
+					}
+					
+					else {
+						System.out.println("Clear");
+					}
+		
+		}
+	}
+}//class lf ends here
+
+class LoginTest{
+	public static void main(String[] args) {
+		
+		LoginFrame lf = new LoginFrame();
+	}
+}

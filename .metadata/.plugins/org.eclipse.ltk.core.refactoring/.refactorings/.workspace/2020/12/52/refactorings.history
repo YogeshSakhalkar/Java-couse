@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;javaaScript&apos;" deleteContents="true" description="Delete resource &apos;javaaScript&apos;" element1="/javaaScript" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1608557469328"/>&#x0A;<refactoring comment="Delete resource &apos;hibernateExample/src/hibernateExample/kgf.xml&apos;" deleteContents="false" description="Delete resource &apos;hibernateExample/src/hibernateExample/kgf.xml&apos;" element1="/hibernateExample/src/hibernateExample/kgf.xml" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1608958049050"/>
+</session>

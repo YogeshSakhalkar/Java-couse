@@ -1,0 +1,27 @@
+
+class emp 
+{
+	int id;
+	char[] name;
+	float salary;
+	
+	int getId() {
+		return id;
+	}
+	void setId(int id) {
+		this.id = id;
+	}
+	char[] getName() {
+		return name;
+	}
+	void setName(char[] name) {
+		this.name = name;
+	}
+	float getSalary() {
+		return salary;
+	}
+	void setSalary(float salary) {
+		this.salary = salary;
+	}
+	
+}
